@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-
-const port = require('../src/config/port');
+const { errors } = require('celebrate');
 const routes = require('./routes');
 
 const app = express();
@@ -9,5 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(routes);
+app.use(errors());
 
-app.listen(port, console.log(`Listening to port ${port}`))
+module.exports = app;
